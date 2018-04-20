@@ -26,6 +26,10 @@ open class PDFAnnotationStore: NSObject, NSCoding {
         self.delegate?.annotationStore(store: self, addedAnnotation: annotation)
     }
 
+    public func getNumberOfAnnotations() -> Int {
+        return self.annotations.count
+    }
+
     func remove(annotation: PDFAnnotation) {
         if let index = annotations.index(where: { $0.uuid == annotation.uuid }), index > -1 {
             self.delegate?.annotationStore(store: self, removedAnnotation: annotation)
